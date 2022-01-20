@@ -1,0 +1,31 @@
+# For more information on how to configure this file, please see:
+# https://docs.getdbt.com/docs/profile
+config:
+  partial_parse: True
+  send_anonymous_usage_stats: False
+  debug: True
+
+default:
+  outputs:
+    dataset1:
+      type: bigquery
+      method: oauth
+      project: "{{ env_var('PROJECT_ID') }}"
+      location: "US"
+      dataset: "test_dataset1"
+      priority: "{{ env_var('DBT_BIGQUERY_PRIORITY', 'interactive') }}"
+      # If we want to increase concurrency, please change `threads`.
+      threads: |
+        {{ env_var("DBT_THREADS", 1) }}
+      impersonate_service_account: "test-dataset1-accessor@{{ env_var('PROJECT_ID') }}.iam.gserviceaccount.com"
+    dataset2:
+      type: bigquery
+      method: oauth
+      project: "{{ env_var('PROJECT_ID') }}"
+      location: "US"
+      dataset: "test_dataset2"
+      priority: "{{ env_var('DBT_BIGQUERY_PRIORITY', 'interactive') }}"
+      # If we want to increase concurrency, please change `threads`.
+      threads: |
+        {{ env_var("DBT_THREADS", 1) }}
+      impersonate_service_account: "test-dataset2-accessor@{{ env_var('PROJECT_ID') }}.iam.gserviceaccount.com"

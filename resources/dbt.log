@@ -1,0 +1,143 @@
+
+
+============================== 2022-01-20 07:35:32.518409 | cc65600e-cbc9-4609-91de-058a19631678 ==============================
+07:35:32.518409 [info ] [MainThread]: Running with dbt=1.0.0
+07:35:32.519765 [debug] [MainThread]: running dbt with arguments Namespace(cls=<class 'dbt.task.compile.CompileTask'>, debug=None, defer=None, event_buffer_size=None, exclude=None, fail_fast=None, full_refresh=False, log_cache_events=False, log_format=None, parse_only=False, partial_parse=None, printer_width=None, profile=None, profiles_dir='/Users/yu/local/src/github/test-dbt-with-multiple-service-accounts/profiles', project_dir=None, record_timing_info=None, rpc_method='compile', select=['tag:test_dataset1'], selector_name=None, send_anonymous_usage_stats=None, single_threaded=False, state=None, static_parser=None, target='dataset1', threads=None, use_colors=None, use_experimental_parser=None, vars='{}', version_check=None, warn_error=None, which='compile', write_json=None)
+07:35:32.520275 [debug] [MainThread]: Tracking: do not track
+07:35:32.571903 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+07:35:32.572485 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+07:35:32.583610 [info ] [MainThread]: Found 2 models, 0 tests, 0 snapshots, 0 analyses, 189 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+07:35:32.585071 [info ] [MainThread]: 
+07:35:32.585778 [debug] [MainThread]: Acquiring new bigquery connection "master"
+07:35:32.586942 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project_test_dataset2"
+07:35:32.587666 [debug] [ThreadPool]: Opening a new connection, currently in state init
+07:35:34.344108 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project_test_dataset1"
+07:35:34.345889 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+07:35:35.400545 [debug] [MainThread]: Connection 'master' was properly closed.
+07:35:35.401698 [debug] [MainThread]: Connection 'list_your-gcp-project_test_dataset1' was properly closed.
+07:35:35.404240 [debug] [MainThread]: Flushing usage events
+07:35:35.405398 [error] [MainThread]: Encountered an error:
+403 GET https://bigquery.googleapis.com/bigquery/v2/projects/your-gcp-project/datasets/test_dataset2/tables?maxResults=100000&prettyPrint=false: Access Denied: Dataset your-gcp-project:test_dataset2: Permission bigquery.tables.list denied on dataset your-gcp-project:test_dataset2 (or it may not exist).
+07:35:35.411846 [debug] [MainThread]: Traceback (most recent call last):
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/main.py", line 127, in main
+    results, succeeded = handle_and_check(args)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/main.py", line 192, in handle_and_check
+    task, res = run_from_args(parsed)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/main.py", line 246, in run_from_args
+    results = task.run()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/task/runnable.py", line 476, in run
+    result = self.execute_with_hooks(selected_uids)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/task/runnable.py", line 431, in execute_with_hooks
+    self.before_run(adapter, selected_uids)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/task/runnable.py", line 418, in before_run
+    self.populate_adapter_cache(adapter)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/task/runnable.py", line 411, in populate_adapter_cache
+    adapter.set_relations_cache(self.manifest)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/adapters/base/impl.py", line 380, in set_relations_cache
+    self._relations_cache_for_schemas(manifest)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/adapters/base/impl.py", line 360, in _relations_cache_for_schemas
+    for relation in future.result():
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/concurrent/futures/_base.py", line 432, in result
+    return self.__get_result()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/concurrent/futures/_base.py", line 388, in __get_result
+    raise self._exception
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/utils.py", line 469, in connected
+    return func(*args, **kwargs)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/adapters/bigquery/impl.py", line 284, in list_relations_without_caching
+    return [self._bq_table_to_relation(table) for table in all_tables]
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/adapters/bigquery/impl.py", line 284, in <listcomp>
+    return [self._bq_table_to_relation(table) for table in all_tables]
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/page_iterator.py", line 214, in _items_iter
+    for page in self._page_iter(increment=False):
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/page_iterator.py", line 253, in _page_iter
+    page = self._next_page()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/page_iterator.py", line 382, in _next_page
+    response = self._get_next_page_response()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/page_iterator.py", line 441, in _get_next_page_response
+    return self.api_request(
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 1525, in api_request
+    return self._call_api(
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 782, in _call_api
+    return call()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/retry.py", line 286, in retry_wrapped_func
+    return retry_target(
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/retry.py", line 189, in retry_target
+    return target()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/cloud/_http.py", line 484, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.Forbidden: 403 GET https://bigquery.googleapis.com/bigquery/v2/projects/your-gcp-project/datasets/test_dataset2/tables?maxResults=100000&prettyPrint=false: Access Denied: Dataset your-gcp-project:test_dataset2: Permission bigquery.tables.list denied on dataset your-gcp-project:test_dataset2 (or it may not exist).
+
+
+
+============================== 2022-01-20 07:35:38.357916 | be0fc7ea-6a09-4e86-a865-3d55819d99d0 ==============================
+07:35:38.357916 [info ] [MainThread]: Running with dbt=1.0.0
+07:35:38.358920 [debug] [MainThread]: running dbt with arguments Namespace(cls=<class 'dbt.task.run.RunTask'>, debug=None, defer=None, event_buffer_size=None, exclude=None, fail_fast=None, full_refresh=False, log_cache_events=False, log_format=None, partial_parse=None, printer_width=None, profile=None, profiles_dir='/Users/yu/local/src/github/test-dbt-with-multiple-service-accounts/profiles', project_dir=None, record_timing_info=None, rpc_method='run', select=['tag:test_dataset1'], selector_name=None, send_anonymous_usage_stats=None, single_threaded=False, state=None, static_parser=None, target='dataset1', threads=None, use_colors=None, use_experimental_parser=None, vars='{}', version_check=None, warn_error=None, which='run', write_json=None)
+07:35:38.359423 [debug] [MainThread]: Tracking: do not track
+07:35:38.407485 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+07:35:38.408158 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+07:35:38.419367 [info ] [MainThread]: Found 2 models, 0 tests, 0 snapshots, 0 analyses, 189 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+07:35:38.420699 [info ] [MainThread]: 
+07:35:38.421253 [debug] [MainThread]: Acquiring new bigquery connection "master"
+07:35:38.422191 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project"
+07:35:38.422581 [debug] [ThreadPool]: Opening a new connection, currently in state init
+07:35:40.240122 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project_test_dataset2"
+07:35:40.240982 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+07:35:41.141876 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project_test_dataset1"
+07:35:41.142564 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+07:35:41.916562 [debug] [MainThread]: Connection 'master' was properly closed.
+07:35:41.917202 [debug] [MainThread]: Connection 'list_your-gcp-project_test_dataset1' was properly closed.
+07:35:41.918505 [debug] [MainThread]: Flushing usage events
+07:35:41.919207 [error] [MainThread]: Encountered an error:
+403 GET https://bigquery.googleapis.com/bigquery/v2/projects/your-gcp-project/datasets/test_dataset2/tables?maxResults=100000&prettyPrint=false: Access Denied: Dataset your-gcp-project:test_dataset2: Permission bigquery.tables.list denied on dataset your-gcp-project:test_dataset2 (or it may not exist).
+07:35:41.923038 [debug] [MainThread]: Traceback (most recent call last):
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/main.py", line 127, in main
+    results, succeeded = handle_and_check(args)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/main.py", line 192, in handle_and_check
+    task, res = run_from_args(parsed)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/main.py", line 246, in run_from_args
+    results = task.run()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/task/runnable.py", line 476, in run
+    result = self.execute_with_hooks(selected_uids)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/task/runnable.py", line 431, in execute_with_hooks
+    self.before_run(adapter, selected_uids)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/task/run.py", line 458, in before_run
+    self.populate_adapter_cache(adapter)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/task/runnable.py", line 411, in populate_adapter_cache
+    adapter.set_relations_cache(self.manifest)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/adapters/base/impl.py", line 380, in set_relations_cache
+    self._relations_cache_for_schemas(manifest)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/adapters/base/impl.py", line 360, in _relations_cache_for_schemas
+    for relation in future.result():
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/concurrent/futures/_base.py", line 432, in result
+    return self.__get_result()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/concurrent/futures/_base.py", line 388, in __get_result
+    raise self._exception
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/utils.py", line 469, in connected
+    return func(*args, **kwargs)
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/adapters/bigquery/impl.py", line 284, in list_relations_without_caching
+    return [self._bq_table_to_relation(table) for table in all_tables]
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/dbt/adapters/bigquery/impl.py", line 284, in <listcomp>
+    return [self._bq_table_to_relation(table) for table in all_tables]
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/page_iterator.py", line 214, in _items_iter
+    for page in self._page_iter(increment=False):
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/page_iterator.py", line 253, in _page_iter
+    page = self._next_page()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/page_iterator.py", line 382, in _next_page
+    response = self._get_next_page_response()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/page_iterator.py", line 441, in _get_next_page_response
+    return self.api_request(
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 1525, in api_request
+    return self._call_api(
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 782, in _call_api
+    return call()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/retry.py", line 286, in retry_wrapped_func
+    return retry_target(
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/api_core/retry.py", line 189, in retry_target
+    return target()
+  File "/Users/yu/anaconda2/envs/python3.8/lib/python3.8/site-packages/google/cloud/_http.py", line 484, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.Forbidden: 403 GET https://bigquery.googleapis.com/bigquery/v2/projects/your-gcp-project/datasets/test_dataset2/tables?maxResults=100000&prettyPrint=false: Access Denied: Dataset your-gcp-project:test_dataset2: Permission bigquery.tables.list denied on dataset your-gcp-project:test_dataset2 (or it may not exist).
