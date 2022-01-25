@@ -1,7 +1,7 @@
 name: dbt_issue_with_multiple_service_accounts
 version: '1.0'
 config-version: 2
-require-dbt-version: "=1.0.0"
+require-dbt-version: ">=1.0.0"
 profile: default
 
 model-paths: ["models"]

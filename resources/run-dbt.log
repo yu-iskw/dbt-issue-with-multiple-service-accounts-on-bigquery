@@ -1,0 +1,129 @@
+
+
+============================== 2022-01-25 01:34:40.446469 | ddbad033-76b2-4c19-a694-4a4b3185f225 ==============================
+01:34:40.446469 [info ] [MainThread]: Running with dbt=1.0.1
+01:34:40.447366 [debug] [MainThread]: running dbt with arguments Namespace(cls=<class 'dbt.task.compile.CompileTask'>, debug=None, defer=None, event_buffer_size=None, exclude=None, fail_fast=None, full_refresh=False, log_cache_events=False, log_format=None, parse_only=False, partial_parse=None, printer_width=None, profile=None, profiles_dir='/Users/yu/local/src/github/test-dbt-with-multiple-service-accounts/profiles', project_dir=None, record_timing_info=None, rpc_method='compile', select=None, selector_name=None, send_anonymous_usage_stats=None, single_threaded=False, state=None, static_parser=None, target='dataset1', threads=None, use_colors=None, use_experimental_parser=None, vars='{}', version_check=None, warn_error=None, which='compile', write_json=None)
+01:34:40.447955 [debug] [MainThread]: Tracking: do not track
+01:34:40.525479 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+01:34:40.526101 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+01:34:40.537291 [info ] [MainThread]: Found 2 models, 0 tests, 0 snapshots, 0 analyses, 189 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+01:34:40.538580 [info ] [MainThread]: 
+01:34:40.539134 [debug] [MainThread]: Acquiring new bigquery connection "master"
+01:34:40.540116 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project_test_dataset1"
+01:34:40.540703 [debug] [ThreadPool]: Opening a new connection, currently in state init
+01:34:41.614110 [info ] [ThreadPool]: BigQuery adapter: Exception: <google.api_core.page_iterator.HTTPIterator object at 0x7fe8284e7a30>
+01:34:42.545999 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project_test_dataset2"
+01:34:42.547793 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+01:34:42.549810 [info ] [ThreadPool]: BigQuery adapter: Exception: <google.api_core.page_iterator.HTTPIterator object at 0x7fe8284e7df0>
+01:34:43.450037 [debug] [ThreadPool]: BigQuery adapter: Forbidden 403 GET https://bigquery.googleapis.com/bigquery/v2/projects/your-gcp-project/datasets/test_dataset2/tables?maxResults=100000&prettyPrint=false: Access Denied: Dataset your-gcp-project:test_dataset2: Permission bigquery.tables.list denied on dataset your-gcp-project:test_dataset2 (or it may not exist).
+01:34:43.452949 [info ] [MainThread]: Concurrency: 1 threads (target='dataset1')
+01:34:43.454151 [info ] [MainThread]: 
+01:34:43.465423 [debug] [Thread-1  ]: Began running node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:34:43.466747 [debug] [Thread-1  ]: Acquiring new bigquery connection "model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1"
+01:34:43.467562 [debug] [Thread-1  ]: Began compiling node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:34:43.468394 [debug] [Thread-1  ]: Compiling model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:34:43.477096 [debug] [Thread-1  ]: Writing injected SQL for node "model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1"
+01:34:43.478883 [debug] [Thread-1  ]: finished collecting timing info
+01:34:43.479943 [debug] [Thread-1  ]: Began executing node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:34:43.481218 [debug] [Thread-1  ]: finished collecting timing info
+01:34:43.483117 [debug] [Thread-1  ]: Finished running node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:34:43.484385 [debug] [Thread-1  ]: Began running node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset2
+01:34:43.485739 [debug] [Thread-1  ]: Acquiring new bigquery connection "model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset2"
+01:34:43.486401 [debug] [Thread-1  ]: Began compiling node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset2
+01:34:43.487023 [debug] [Thread-1  ]: Compiling model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset2
+01:34:43.491736 [debug] [Thread-1  ]: Writing injected SQL for node "model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset2"
+01:34:43.492691 [debug] [Thread-1  ]: finished collecting timing info
+01:34:43.493140 [debug] [Thread-1  ]: Began executing node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset2
+01:34:43.493559 [debug] [Thread-1  ]: finished collecting timing info
+01:34:43.494180 [debug] [Thread-1  ]: Finished running node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset2
+01:34:43.495362 [debug] [MainThread]: Connection 'master' was properly closed.
+01:34:43.495839 [debug] [MainThread]: Connection 'model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset2' was properly closed.
+01:34:43.501154 [info ] [MainThread]: Done.
+01:34:43.502182 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2022-01-25 01:34:45.950084 | 9e308a83-4a37-40a9-bfd5-46016cf3afe7 ==============================
+01:34:45.950084 [info ] [MainThread]: Running with dbt=1.0.1
+01:34:45.950815 [debug] [MainThread]: running dbt with arguments Namespace(cls=<class 'dbt.task.run.RunTask'>, debug=None, defer=None, event_buffer_size=None, exclude=None, fail_fast=None, full_refresh=False, log_cache_events=False, log_format=None, partial_parse=None, printer_width=None, profile=None, profiles_dir='/Users/yu/local/src/github/test-dbt-with-multiple-service-accounts/profiles', project_dir=None, record_timing_info=None, rpc_method='run', select=None, selector_name=None, send_anonymous_usage_stats=None, single_threaded=False, state=None, static_parser=None, target='dataset1', threads=None, use_colors=None, use_experimental_parser=None, vars='{}', version_check=None, warn_error=None, which='run', write_json=None)
+01:34:45.951385 [debug] [MainThread]: Tracking: do not track
+01:34:46.007188 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+01:34:46.007837 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+01:34:46.020586 [info ] [MainThread]: Found 2 models, 0 tests, 0 snapshots, 0 analyses, 189 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+01:34:46.021878 [info ] [MainThread]: 
+01:34:46.022434 [debug] [MainThread]: Acquiring new bigquery connection "master"
+01:34:46.023597 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project"
+01:34:46.024041 [debug] [ThreadPool]: Opening a new connection, currently in state init
+01:34:48.259091 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project"
+01:34:48.261542 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+01:34:49.557734 [debug] [ThreadPool]: Acquiring new bigquery connection "create_your-gcp-project_test_dataset2"
+01:34:49.559708 [debug] [ThreadPool]: Acquiring new bigquery connection "create_your-gcp-project_test_dataset2"
+01:34:49.560697 [debug] [ThreadPool]: BigQuery adapter: Creating schema "your-gcp-project.test_dataset2".
+01:34:49.561625 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+01:34:50.445098 [debug] [MainThread]: Connection 'master' was properly closed.
+01:34:50.446066 [debug] [MainThread]: Connection 'create_your-gcp-project_test_dataset2' was properly closed.
+01:34:50.448136 [debug] [MainThread]: Flushing usage events
+01:34:50.449264 [error] [MainThread]: Encountered an error:
+Database Error
+  Access Denied: Project your-gcp-project: User does not have bigquery.datasets.create permission in project your-gcp-project.
+01:34:50.473654 [debug] [MainThread]: Traceback (most recent call last):
+  File "/Users/yu/local/src/github/dbt-bigquery/dbt/adapters/bigquery/connections.py", line 181, in exception_handler
+    yield
+  File "/Users/yu/local/src/github/dbt-bigquery/dbt/adapters/bigquery/connections.py", line 590, in _retry_and_handle
+    return retry.retry_target(
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/Users/yu/local/src/github/dbt-bigquery/dbt/adapters/bigquery/connections.py", line 560, in fn
+    return client.create_dataset(dataset, exists_ok=True)
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 610, in create_dataset
+    api_response = self._call_api(
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/google/cloud/bigquery/client.py", line 760, in _call_api
+    return call()
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/google/api_core/retry.py", line 283, in retry_wrapped_func
+    return retry_target(
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 480, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.Forbidden: 403 POST https://bigquery.googleapis.com/bigquery/v2/projects/your-gcp-project/datasets?prettyPrint=false: Access Denied: Project your-gcp-project: User does not have bigquery.datasets.create permission in project your-gcp-project.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/dbt/main.py", line 127, in main
+    results, succeeded = handle_and_check(args)
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/dbt/main.py", line 192, in handle_and_check
+    task, res = run_from_args(parsed)
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/dbt/main.py", line 246, in run_from_args
+    results = task.run()
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/dbt/task/runnable.py", line 476, in run
+    result = self.execute_with_hooks(selected_uids)
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/dbt/task/runnable.py", line 431, in execute_with_hooks
+    self.before_run(adapter, selected_uids)
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/dbt/task/run.py", line 457, in before_run
+    self.create_schemas(adapter, selected_uids)
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/dbt/task/runnable.py", line 587, in create_schemas
+    create_future.result()
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/dbt/utils.py", line 469, in connected
+    return func(*args, **kwargs)
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/site-packages/dbt/task/runnable.py", line 550, in create_schema
+    adapter.create_schema(relation)
+  File "/Users/yu/local/src/github/dbt-bigquery/dbt/adapters/bigquery/impl.py", line 326, in create_schema
+    self.connections.create_dataset(database, schema)
+  File "/Users/yu/local/src/github/dbt-bigquery/dbt/adapters/bigquery/connections.py", line 561, in create_dataset
+    self._retry_and_handle(msg='create dataset', conn=conn, fn=fn)
+  File "/Users/yu/local/src/github/dbt-bigquery/dbt/adapters/bigquery/connections.py", line 590, in _retry_and_handle
+    return retry.retry_target(
+  File "/Users/yu/anaconda2/envs/dbt-bigquery-dev/lib/python3.8/contextlib.py", line 131, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/yu/local/src/github/dbt-bigquery/dbt/adapters/bigquery/connections.py", line 189, in exception_handler
+    self.handle_error(e, message)
+  File "/Users/yu/local/src/github/dbt-bigquery/dbt/adapters/bigquery/connections.py", line 173, in handle_error
+    raise DatabaseException(error_msg)
+dbt.exceptions.DatabaseException: Database Error
+  Access Denied: Project your-gcp-project: User does not have bigquery.datasets.create permission in project your-gcp-project.

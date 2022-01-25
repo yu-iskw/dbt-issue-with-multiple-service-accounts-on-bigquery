@@ -1,0 +1,95 @@
+
+
+============================== 2022-01-25 01:33:24.566670 | 6b3528f6-1771-48d9-b1c8-1fe26789abbe ==============================
+01:33:24.566670 [info ] [MainThread]: Running with dbt=1.0.1
+01:33:24.567810 [debug] [MainThread]: running dbt with arguments Namespace(cls=<class 'dbt.task.compile.CompileTask'>, debug=None, defer=None, event_buffer_size=None, exclude=None, fail_fast=None, full_refresh=False, log_cache_events=False, log_format=None, parse_only=False, partial_parse=None, printer_width=None, profile=None, profiles_dir='/Users/yu/local/src/github/test-dbt-with-multiple-service-accounts/profiles', project_dir=None, record_timing_info=None, rpc_method='compile', select=['tag:test_dataset1'], selector_name=None, send_anonymous_usage_stats=None, single_threaded=False, state=None, static_parser=None, target='dataset1', threads=None, use_colors=None, use_experimental_parser=None, vars='{}', version_check=None, warn_error=None, which='compile', write_json=None)
+01:33:24.568331 [debug] [MainThread]: Tracking: do not track
+01:33:24.625768 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 2 files changed.
+01:33:24.626649 [debug] [MainThread]: Partial parsing: updated file: dbt_issue_with_multiple_service_accounts://models/model_in_test_dataset2.sql
+01:33:24.627239 [debug] [MainThread]: Partial parsing: updated file: dbt_issue_with_multiple_service_accounts://models/model_in_test_dataset1.sql
+01:33:24.644270 [debug] [MainThread]: 1603: static parser failed on model_in_test_dataset2.sql
+01:33:24.657173 [debug] [MainThread]: 1602: parser fallback to jinja rendering on model_in_test_dataset2.sql
+01:33:24.658601 [debug] [MainThread]: 1603: static parser failed on model_in_test_dataset1.sql
+01:33:24.662552 [debug] [MainThread]: 1602: parser fallback to jinja rendering on model_in_test_dataset1.sql
+01:33:24.679586 [info ] [MainThread]: Found 2 models, 0 tests, 0 snapshots, 0 analyses, 189 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+01:33:24.680798 [info ] [MainThread]: 
+01:33:24.681366 [debug] [MainThread]: Acquiring new bigquery connection "master"
+01:33:24.682254 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project_test_dataset2"
+01:33:24.682853 [debug] [ThreadPool]: Opening a new connection, currently in state init
+01:33:25.675394 [info ] [ThreadPool]: BigQuery adapter: Exception: <google.api_core.page_iterator.HTTPIterator object at 0x7f7c00d3f310>
+01:33:26.649409 [debug] [ThreadPool]: BigQuery adapter: Forbidden 403 GET https://bigquery.googleapis.com/bigquery/v2/projects/your-gcp-project/datasets/test_dataset2/tables?maxResults=100000&prettyPrint=false: Access Denied: Dataset your-gcp-project:test_dataset2: Permission bigquery.tables.list denied on dataset your-gcp-project:test_dataset2 (or it may not exist).
+01:33:26.651278 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project_test_dataset1"
+01:33:26.652031 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+01:33:26.653247 [info ] [ThreadPool]: BigQuery adapter: Exception: <google.api_core.page_iterator.HTTPIterator object at 0x7f7be1921190>
+01:33:27.548123 [info ] [MainThread]: Concurrency: 1 threads (target='dataset1')
+01:33:27.549704 [info ] [MainThread]: 
+01:33:27.560824 [debug] [Thread-1  ]: Began running node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:33:27.562170 [debug] [Thread-1  ]: Acquiring new bigquery connection "model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1"
+01:33:27.562999 [debug] [Thread-1  ]: Began compiling node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:33:27.563689 [debug] [Thread-1  ]: Compiling model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:33:27.573772 [debug] [Thread-1  ]: Writing injected SQL for node "model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1"
+01:33:27.575058 [debug] [Thread-1  ]: finished collecting timing info
+01:33:27.575613 [debug] [Thread-1  ]: Began executing node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:33:27.576145 [debug] [Thread-1  ]: finished collecting timing info
+01:33:27.576875 [debug] [Thread-1  ]: Finished running node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:33:27.578237 [debug] [MainThread]: Connection 'master' was properly closed.
+01:33:27.578761 [debug] [MainThread]: Connection 'model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1' was properly closed.
+01:33:27.584445 [info ] [MainThread]: Done.
+01:33:27.585970 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2022-01-25 01:33:29.980047 | 8f78929f-710c-4d5e-b78c-4c94526621cc ==============================
+01:33:29.980047 [info ] [MainThread]: Running with dbt=1.0.1
+01:33:29.981402 [debug] [MainThread]: running dbt with arguments Namespace(cls=<class 'dbt.task.run.RunTask'>, debug=None, defer=None, event_buffer_size=None, exclude=None, fail_fast=None, full_refresh=False, log_cache_events=False, log_format=None, partial_parse=None, printer_width=None, profile=None, profiles_dir='/Users/yu/local/src/github/test-dbt-with-multiple-service-accounts/profiles', project_dir=None, record_timing_info=None, rpc_method='run', select=['tag:test_dataset1'], selector_name=None, send_anonymous_usage_stats=None, single_threaded=False, state=None, static_parser=None, target='dataset1', threads=None, use_colors=None, use_experimental_parser=None, vars='{}', version_check=None, warn_error=None, which='run', write_json=None)
+01:33:29.982346 [debug] [MainThread]: Tracking: do not track
+01:33:30.055664 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+01:33:30.056256 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+01:33:30.067523 [info ] [MainThread]: Found 2 models, 0 tests, 0 snapshots, 0 analyses, 189 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+01:33:30.068845 [info ] [MainThread]: 
+01:33:30.069465 [debug] [MainThread]: Acquiring new bigquery connection "master"
+01:33:30.070372 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project"
+01:33:30.070808 [debug] [ThreadPool]: Opening a new connection, currently in state init
+01:33:31.859280 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project_test_dataset1"
+01:33:31.861074 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+01:33:31.863372 [info ] [ThreadPool]: BigQuery adapter: Exception: <google.api_core.page_iterator.HTTPIterator object at 0x7f8488500940>
+01:33:32.722866 [debug] [ThreadPool]: Acquiring new bigquery connection "list_your-gcp-project_test_dataset2"
+01:33:32.723448 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+01:33:32.724164 [info ] [ThreadPool]: BigQuery adapter: Exception: <google.api_core.page_iterator.HTTPIterator object at 0x7f8478c5e5e0>
+01:33:33.625051 [debug] [ThreadPool]: BigQuery adapter: Forbidden 403 GET https://bigquery.googleapis.com/bigquery/v2/projects/your-gcp-project/datasets/test_dataset2/tables?maxResults=100000&prettyPrint=false: Access Denied: Dataset your-gcp-project:test_dataset2: Permission bigquery.tables.list denied on dataset your-gcp-project:test_dataset2 (or it may not exist).
+01:33:33.627717 [info ] [MainThread]: Concurrency: 1 threads (target='dataset1')
+01:33:33.628866 [info ] [MainThread]: 
+01:33:33.636191 [debug] [Thread-1  ]: Began running node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:33:33.637390 [info ] [Thread-1  ]: 1 of 1 START view model test_dataset1.model_in_test_dataset1.................... [RUN]
+01:33:33.638489 [debug] [Thread-1  ]: Acquiring new bigquery connection "model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1"
+01:33:33.639545 [debug] [Thread-1  ]: Began compiling node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:33:33.640428 [debug] [Thread-1  ]: Compiling model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:33:33.646552 [debug] [Thread-1  ]: Writing injected SQL for node "model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1"
+01:33:33.647779 [debug] [Thread-1  ]: finished collecting timing info
+01:33:33.648371 [debug] [Thread-1  ]: Began executing node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:33:33.685286 [debug] [Thread-1  ]: Writing runtime SQL for node "model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1"
+01:33:33.686241 [debug] [Thread-1  ]: Opening a new connection, currently in state closed
+01:33:33.686800 [debug] [Thread-1  ]: On model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1: /* {"app": "dbt", "dbt_version": "1.0.1", "profile_name": "default", "target_name": "dataset1", "node_id": "model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1"} */
+
+
+  create or replace view `your-gcp-project`.`test_dataset1`.`model_in_test_dataset1`
+  OPTIONS()
+  as 
+
+
+
+SELECT 1 AS x;
+
+
+01:33:35.268845 [debug] [Thread-1  ]: finished collecting timing info
+01:33:35.270291 [info ] [Thread-1  ]: 1 of 1 OK created view model test_dataset1.model_in_test_dataset1............... [OK in 1.63s]
+01:33:35.271398 [debug] [Thread-1  ]: Finished running node model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1
+01:33:35.273680 [debug] [MainThread]: Acquiring new bigquery connection "master"
+01:33:35.274935 [info ] [MainThread]: 
+01:33:35.275981 [info ] [MainThread]: Finished running 1 view model in 5.21s.
+01:33:35.276862 [debug] [MainThread]: Connection 'master' was properly closed.
+01:33:35.277470 [debug] [MainThread]: Connection 'model.dbt_issue_with_multiple_service_accounts.model_in_test_dataset1' was properly closed.
+01:33:35.284728 [info ] [MainThread]: 
+01:33:35.285299 [info ] [MainThread]: Completed successfully
+01:33:35.285854 [info ] [MainThread]: 
+01:33:35.286313 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+01:33:35.292078 [debug] [MainThread]: Flushing usage events
